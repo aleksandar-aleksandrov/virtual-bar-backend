@@ -4,18 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace VirtualBarBackend.DTOS
+namespace VirtualBarBackend.DTOS.Auth
 {
-    public class RegisterUserDTO
+    public class LoginUserDTO
     {
         [Required]
-        public string firstName;
-
-        [Required]
-        public string lastName;
-
-        [Required]
-        [EmailAddress]
         public string eMail;
 
         [Required]

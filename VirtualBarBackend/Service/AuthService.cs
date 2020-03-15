@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using VirtualBarBackend.Config;
 using VirtualBarBackend.DTOS;
+using VirtualBarBackend.DTOS.Auth;
 using VirtualBarBackend.Models;
 
 namespace VirtualBarBackend.Service
@@ -21,12 +22,9 @@ namespace VirtualBarBackend.Service
             _users = database.GetCollection<User>(databaseConnection.UsersCollectionName);
         }
 
-        public List<User> Get() =>
-            _users.Find(user => true).ToList();
-
         public User RegisterUser(RegisterUserDTO registerUserDTO)
         {
-            var userEntity = new User(registerUserDTO.firstName, registerUserDTO.lastName, registerUserDTO.eMail);
+            var userEntity = new User(registerUserDTO.firstName, registerUserDTO.lastName, registerUserDTO.eMail, registerUserDTO.plainPassword);
 
              _users.InsertOne(userEntity);
             return userEntity;

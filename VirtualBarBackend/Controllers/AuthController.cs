@@ -23,10 +23,10 @@ namespace VirtualBarBackend.Controllers
 
 
         [HttpPost("register")]
-        public ActionResult<RegisterUserDTO> Register(RegisterUserDTO registerUserDTO)
+        public ActionResult<string> Register(RegisterUserDTO registerUserDTO)
         {
             _authService.RegisterUser(registerUserDTO);
-            return registerUserDTO;
+            return "User successfully registered";
         }
     }
 }
